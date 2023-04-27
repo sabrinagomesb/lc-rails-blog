@@ -11,6 +11,22 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="bg-danger text-white text-center mb-2 p-4">
+      <%= link_to root_path, class: 'text-white' do %>
+        <h1 class="display-8"> Blog Dev Sandy - Ruby on Rails </h1>
+      <% end %>
+      <p class="lead">
+        Primeiros passos no mundo do Ruby on Rails
+      </p>
+    </div>
+
+    <div class="container">
+      <%= yield %>
+    </div>
+
+    <footer class="bg-danger text-white text-center mt-5 p-4">
+      Feito por Sabrina Gomes 💫 <%= Date.current.year %>
+    </footer>
+
   </body>
 </html>
