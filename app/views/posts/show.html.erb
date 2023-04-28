@@ -1,5 +1,4 @@
 <div class="shadow bg-light p-5 rounded">
-
   <div class="text-center mb-5">
     <h1><%= @post.title %></h1>
 
@@ -13,4 +12,30 @@
     <%= @post.body.gsub("\n", "<br>").html_safe %>
   </div>
 
-</div>
+  <div class="m-5">
+    <div class="text-center">
+      <h4><%= pluralize @post.comments.count, 'Comentário' %>
+
+        <% if @post.comments.count.zero?%>
+          <span class="badge text-bg-dark">Seja o primeiro a comentar</span>
+        <% end %>
+      </h4>
+    </div>
+
+    <%= form_with model: @comment, local: true do |form| %>
+      <%# LINHA ABAIXO CRIADA PARA ASSOCIAR O COMENTARIO AO ID DO POST %>
+      <%= form.hidden_field :post_id, value: @post.id   %>
+      <div class="form-group">
+        <%= form.label :author %>
+        <%= form.text_field :author, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :body %>
+        <%= form.text_area :body, class: 'form-control', rows: 2 %>
+      </div>
+
+      <%= form.submit 'Enviar', class: 'btn btn-outline-success', data: { disable_with: 'Enviando...'} %>
+    <% end %>
+
+  </div>
