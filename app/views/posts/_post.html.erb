@@ -1,4 +1,4 @@
-<div class="card bg-light">
+<div class="card bg-light m-3">
   <div class="card-body">
     <h4><%= link_to post.title, post %></h4>
 
@@ -14,6 +14,6 @@
 
     <%= link_to "Editar", edit_post_path(post), class: 'btn btn-outline-primary' %>
 
-    <%= link_to "Apagar", post, method: :delete, class: 'btn btn-outline-primary' %>
+    <%= button_to "Apagar", post_path(post), method: :delete, data: { confirm: "Tem certeza?", turbo_confirm: "Tem certeza que quer apagar esse post?" }, class: 'btn btn-outline-primary' %>
   </div>
 </div>
